@@ -1,8 +1,51 @@
-<table class="table table-sm table-hover table-bordered thead-light">
-  <thead>
-    <tr>
-      <th scope="col">Country</th>
-      <th scope="col">Total Employees</th>
-    </tr>
-  </thead>
-</table>
+<div id="page">
+  <div id="title">
+    <h3>
+      List of Employees
+    </h3>
+  </div>
+  <br>
+
+  <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
+    [attr.aria-expanded]="!isCollapsed" aria-controls="employeeTable">
+    +
+  </button>
+
+  <table id="employeeTable" class="table table-sm table-hover table-bordered thead-light col-4" align="center">
+    <thead>
+      <tr>
+        <th scope="col">Country</th>
+        <th scope="col">Total Employees</th>
+      </tr>
+    </thead>
+    <tbody id="countriesTable">
+      <tr *ngFor="let c of countries">
+        <td>{{c.country}}</td>
+        <td>{{c.employees}}</td>
+      </tr>
+    </tbody>
+    <tbody id="statesTable" [ngbCollapse]="isCollapsed">
+      <tr *ngFor="let s of states">
+        <td>{{s.state}}</td>
+        <td>{{s.employees}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- <div id="employeeTable" [ngbCollapse]="isCollapsed" align="center">
+    <table  class="table table-sm table-hover table-bordered thead-light col-4">
+      <thead>
+        <tr>
+          <th scope="col">State</th>
+          <th scope="col">Total Employees</th>
+        </tr>
+      </thead>
+      <tbody id="statesTable">
+        <tr *ngFor="let s of states">
+          <td>{{s.state}}</td>
+          <td>{{s.employees}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
